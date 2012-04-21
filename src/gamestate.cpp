@@ -7,4 +7,5 @@ gamestate::gamestate(int lives)
     keys = 0;
     gotGun = 0;
     ammo = 0;
+    hp = 5;
 }

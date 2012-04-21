@@ -42,7 +42,12 @@ game::game() : c(160, 144, 160, 144), gs(5)
     assets.push_back(new tilemap(this, "tilemap.png", "gfx.png", "gfxts1.json"));
     assets.push_back(new player(this, 28*8, 30*8, 0));
     assets.push_back(new key(this, 32*8, 30*8, 0));
-    assets.push_back(new door(this, 151*8, 30*8, 0));
+    assets.push_back(new key(this, 142*8, 50*8, 0));
+    assets.push_back(new key(this, 82*8, 68*8, 0));
+    assets.push_back(new door(this, 156*8, 30*8, 0));
+    assets.push_back(new door(this, 183*8, 66*8, 0));
+    assets.push_back(new door(this, 176*8, 85*8, 0));
+
 
     std::cout << "Made game" << std::endl;
 }

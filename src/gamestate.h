@@ -7,6 +7,7 @@ class gamestate {
 
         int playeralive;
         int playerlives;
+        int hp;
         int keys;
         int gotGun;
         int ammo;
