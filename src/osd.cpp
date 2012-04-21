@@ -15,7 +15,7 @@ osd::~osd() { }
 void
 osd::render()
 {
-    g->r->addOpQuad(NULL, 0, 0, 160, 8, 0.05859375, 0.21875, 0.05859375, 1.0);
+    g->r->addOpQuad(NULL, 0, 0, 160, 9, 0.05859375, 0.21875, 0.05859375, 1.0);
 
     g->r->addQuad(tex->getTexture(), NULL,
                    0, 0, 8, 8,

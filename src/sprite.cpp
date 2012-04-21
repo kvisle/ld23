@@ -340,9 +340,10 @@ sprite::collidesWith(float x, float y, float w, float h, drawable *other, int bi
             continue;
 
         if ( bits & BIT_PICKSUP && myb.bits & BIT_PICKUPABLE )
-        {
             other->pickUp(this);
-        }
+
+        if ( bits & BIT_UNLOCKS && myb.bits & BIT_UNLOCKABLE )
+            other->unLock(this);
 
         ret |= myb.bits;
     }

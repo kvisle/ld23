@@ -18,6 +18,7 @@ class drawable {
         virtual int collidesWith(float x, float y, float w, float h, drawable *other, int bits);
         virtual void input(union ninput in);
         virtual void pickUp(drawable *d);
+        virtual void unLock(drawable *d);
         virtual int identify();
 
         game *g;

@@ -60,6 +60,12 @@ drawable::pickUp(drawable *d)
 
 }
 
+void
+drawable::unLock(drawable *d)
+{
+
+}
+
 int
 drawable::identify()
 {

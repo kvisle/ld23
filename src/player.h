@@ -13,6 +13,7 @@ class player : public sprite {
         virtual void render();
         virtual void input(union ninput in);
         virtual void pickUp(drawable *d);
+        virtual void unLock(drawable *d);
 
         virtual void damage();
         virtual void kill();

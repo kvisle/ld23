@@ -24,6 +24,7 @@
 #include "overlay.h"
 #include "player.h"
 #include "key.h"
+#include "door.h"
 
 game::game() : c(160, 144, 160, 144), gs(5)
 {
@@ -41,7 +42,7 @@ game::game() : c(160, 144, 160, 144), gs(5)
     assets.push_back(new tilemap(this, "tilemap.png", "gfx.png", "gfxts1.json"));
     assets.push_back(new player(this, 28*8, 30*8, 0));
     assets.push_back(new key(this, 32*8, 30*8, 0));
-
+    assets.push_back(new door(this, 151*8, 30*8, 0));
 
     std::cout << "Made game" << std::endl;
 }

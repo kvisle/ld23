@@ -41,7 +41,7 @@ player::update()
     else if ( walking ) setAnimation(ANIMATION_WALK);
     else                setAnimation(ANIMATION_IDLE);
 
-    g->c.snapAt(x+8, y+8);
+    g->c.snapAt(x+8, y);
 //    g->c.keepInFrame(this, 48, 16);
 }
 
@@ -163,4 +163,14 @@ player::pickUp(drawable *d)
         break;
     }
     d->remove();
+}
+
+void
+player::unLock(drawable *d)
+{
+    if ( g->gs.keys == 0 )
+        return;
+
+    d->unLock(this);
+    g->gs.keys--;
 }
