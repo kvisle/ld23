@@ -15,7 +15,7 @@ osd::~osd() { }
 void
 osd::render()
 {
-    char number[10];
+    char number[20];
     g->r->addOpQuad(NULL, 0, 0, 160, 9, 0.05859375, 0.21875, 0.05859375, 1.0);
 
     g->r->addQuad(tex->getTexture(), NULL,
