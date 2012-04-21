@@ -10,6 +10,7 @@ class item : public sprite {
         item(game *g, int x, int y, int z);
 
         virtual int identify();
+        virtual void playGot();
 
 };
 

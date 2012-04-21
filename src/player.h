@@ -4,6 +4,8 @@
 #include "sprite.h"
 #include "input.h"
 
+class sound;
+
 class player : public sprite {
     public:
         player(game *g, int x, int y, int z);
@@ -29,6 +31,8 @@ class player : public sprite {
         int moveGravity();
         int moveLeftRight();
         int moveJump();
+
+        sound *jumpsound;
 };
 
 #endif /* __PLAYER_H__ */

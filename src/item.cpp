@@ -10,5 +10,12 @@ item::item(game *g, int x, int y, int z)
 int
 item::identify()
 {
+    playGot();
     return animation;
+}
+
+void
+item::playGot()
+{
+
 }

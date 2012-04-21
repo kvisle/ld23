@@ -3,11 +3,14 @@
 
 #include "sprite.h"
 
+class sound;
+
 class door : public sprite {
     public:
         door(game *g, int x, int y, int z);
 
         virtual void unLock(drawable *d);
+        sound *opensound;
 };
 
 #endif /* __DOOR_H__ */

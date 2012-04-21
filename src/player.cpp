@@ -1,7 +1,9 @@
 #include <cstdio>
 #include "player.h"
 #include "game.h"
+#include "resourcemanager.h"
 #include "input.h"
+#include "sound.h"
 #include "bits.h"
 
 #define ANIMATION_IDLE 0
@@ -13,6 +15,7 @@ player::player(game *g, int x, int y, int z)
 {
     loadJson(std::string("player.json"));
     g->in->subscribe(this);
+    jumpsound = g->rm->getSound("jump.wav");
 
     walking = 0;
     falling = 0;
@@ -94,6 +97,7 @@ player::moveJump()
     {
         jump_progress = 0;
         jump_start = 0;
+        jumpsound->play();
     }
 
     if ( jump_progress >= 20 )
