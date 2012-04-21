@@ -151,6 +151,9 @@ player::damage()
 void
 player::pickUp(drawable *d)
 {
+    if ( d->removeme )
+        return;
+
     switch(d->identify()) {
     case 0:
         g->gs.keys++;
