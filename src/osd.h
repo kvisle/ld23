@@ -10,6 +10,8 @@ class osd : public drawable {
         ~osd();
 
         virtual void render();
+
+        void drawKeys();
 };
 
 #endif

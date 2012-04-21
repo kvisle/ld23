@@ -12,6 +12,10 @@ class player : public sprite {
         virtual void update();
         virtual void render();
         virtual void input(union ninput in);
+        virtual void pickUp(drawable *d);
+
+        virtual void damage();
+        virtual void kill();
 
     private:
         int walking;
@@ -19,6 +23,7 @@ class player : public sprite {
         int jump_start;
         int jumping;
         int jump_progress;
+        int dead;
 
         int moveGravity();
         int moveLeftRight();

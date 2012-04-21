@@ -18,11 +18,14 @@
 #include "sprite.h"
 #include "input.h"
 
+#include "gamestate.h"
+#include "bits.h"
 #include "osd.h"
 #include "overlay.h"
 #include "player.h"
+#include "key.h"
 
-game::game() : c(160, 144, 160, 144)
+game::game() : c(160, 144, 160, 144), gs(5)
 {
     updateno = 0;
     boxDraw = 0;
@@ -37,6 +40,7 @@ game::game() : c(160, 144, 160, 144)
 
     assets.push_back(new tilemap(this, "tilemap.png", "gfx.png", "gfxts1.json"));
     assets.push_back(new player(this, 28*8, 30*8, 0));
+    assets.push_back(new key(this, 32*8, 30*8, 0));
 
 
     std::cout << "Made game" << std::endl;
@@ -80,8 +84,17 @@ game::update()
     }
 #endif
 
+//    std::vector<drawable*>::iterator it;
+
+//    for (it = assets.begin() ; it != assets.end(); it++)
     for (uint32_t i=0; i < assets.size(); i++)
     {
+        if ( assets[i]->removeme )
+        {
+            assets.erase(assets.begin() + i);
+            i--;
+            continue;
+        }
         assets[i]->update();
     }
 
@@ -92,7 +105,7 @@ game::update()
 }
 
 int
-game::collides(float x, float y, float w, float h, drawable * me)
+game::collides(float x, float y, float w, float h, sprite * me, int bits)
 {
     int ret = 0;
     for (uint32_t i=0; i < assets.size(); i++)
@@ -100,9 +113,16 @@ game::collides(float x, float y, float w, float h, drawable * me)
         if ( assets[i] == me )
             continue;
 
-        ret |= assets[i]->collidesWith(x, y, w, h, me);
+        ret |= assets[i]->collidesWith(x, y, w, h, me, bits);
 
     }
+
+    if ( ret & BIT_KILL && bits & BIT_KILLABLE )
+        me->kill();
+
+    if ( ret & BIT_DAMAGE && bits & BIT_KILLABLE )
+        me->damage();
+
     return ret;
 }
 

@@ -2,6 +2,7 @@
 #include "player.h"
 #include "game.h"
 #include "input.h"
+#include "bits.h"
 
 #define ANIMATION_IDLE 0
 #define ANIMATION_WALK 1
@@ -17,6 +18,7 @@ player::player(game *g, int x, int y, int z)
     falling = 0;
     jumping = 0;
     jump_progress = 0;
+    dead = 0;
 }
 
 player::~player()
@@ -27,6 +29,9 @@ player::~player()
 void
 player::update()
 {
+    if ( dead )
+        return;
+
     falling = moveGravity();
     walking = moveLeftRight();
     jumping = moveJump();
@@ -36,7 +41,8 @@ player::update()
     else if ( walking ) setAnimation(ANIMATION_WALK);
     else                setAnimation(ANIMATION_IDLE);
 
-    g->c.keepInFrame(this, 48, 16);
+    g->c.snapAt(x+8, y+8);
+//    g->c.keepInFrame(this, 48, 16);
 }
 
 int
@@ -111,7 +117,8 @@ player::moveJump()
 void
 player::render()
 {
-    sprite::render();
+    if ( !dead )
+        sprite::render();
 }
 
 void
@@ -125,4 +132,35 @@ player::input(union ninput in)
     case NINPUT_KEYUP:
         break;
     }
+}
+
+void
+player::kill()
+{
+    dead = 1;
+    g->gs.playeralive = 0;
+    puts("I died.");
+}
+
+void
+player::damage()
+{
+    puts("I'm damaged.");
+}
+
+void
+player::pickUp(drawable *d)
+{
+    switch(d->identify()) {
+    case 0:
+        g->gs.keys++;
+        break;
+    case 1:
+        puts("Got jetpack");
+        break;
+    case 2:
+        puts("Got gun");
+        break;
+    }
+    d->remove();
 }

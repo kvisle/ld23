@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "camera.h"
+#include "gamestate.h"
 
 class renderer;
 class resourcemanager;
@@ -23,7 +24,7 @@ class game {
         void render();
         int update();
 
-        int collides(float x, float y, float w, float h, drawable *me);
+        int collides(float x, float y, float w, float h, sprite *me, int bits);
         void setReload(int val);
         int getReload();
         int drawBoxes();
@@ -36,6 +37,7 @@ class game {
         camera c;
         font *f;
         overlay *ov;
+        gamestate gs;
 
         int reload;
 
