@@ -51,8 +51,8 @@ tilemap::loadMap(std::string imgr)
     w = img->w;
     h = img->h;
 
-    tw = 16;
-    th = 16;
+    tw = 8;
+    th = 8;
 
     map.reserve(w*h);
 

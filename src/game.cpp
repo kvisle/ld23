@@ -18,15 +18,26 @@
 #include "sprite.h"
 #include "input.h"
 
-game::game() : c(0, 0, 480, 320)
+#include "osd.h"
+#include "overlay.h"
+#include "player.h"
+
+game::game() : c(160, 144, 160, 144)
 {
     updateno = 0;
+    boxDraw = 0;
 
     in = new input();
-    r = new renderer(480, 320);
+    r = new renderer(160, 144);
     rm = new resourcemanager(this);
     a = new audio();
-    f = new font(rm->getImage("charmap3.png"), this, 8, 8);
+    f = new font(rm->getImage("charmap2.png"), this, 8, 8);
+    ov = new overlay(this);
+    o = new osd(this);
+
+    assets.push_back(new tilemap(this, "tilemap.png", "gfx.png", "gfxts1.json"));
+    assets.push_back(new player(this, 28*8, 30*8, 0));
+
 
     std::cout << "Made game" << std::endl;
 }
@@ -38,6 +49,7 @@ game::~game()
     delete(f);
     delete(in);
     delete(a);
+    delete(ov);
 }
 
 void
@@ -49,7 +61,8 @@ game::render()
     {
         assets[i]->render();
     }
-
+    o->render();
+    ov->render();
     r->swap();
 }
 
@@ -103,4 +116,10 @@ int
 game::getReload()
 {
     return reload;
+}
+
+int
+game::drawBoxes()
+{
+    return this->boxDraw;
 }

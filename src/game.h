@@ -13,6 +13,7 @@ class font;
 class input;
 class osd;
 class audio;
+class overlay;
 
 class game {
     public:
@@ -25,6 +26,7 @@ class game {
         int collides(float x, float y, float w, float h, drawable *me);
         void setReload(int val);
         int getReload();
+        int drawBoxes();
 
         renderer *r;
         resourcemanager *rm;
@@ -33,12 +35,14 @@ class game {
 
         camera c;
         font *f;
+        overlay *ov;
 
         int reload;
 
     private:
         std::vector<drawable*> assets;
         int updateno;
+        int boxDraw;
 
         osd *o;
 };

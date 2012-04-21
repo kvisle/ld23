@@ -25,9 +25,9 @@ int main(int argc, char *argv[])
 
 //    SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, 1);
     SDL_GL_SetAttribute (SDL_GL_DOUBLEBUFFER, 1);
-    SDL_Surface *s = SDL_SetVideoMode(960, 640, 24, SDL_OPENGL);
+    SDL_Surface *s = SDL_SetVideoMode(640, 576, 24, SDL_OPENGL);
 
-    glViewport (0, 0, 960, 640);
+    glViewport (0, 0, 640, 576);
 
     game g;
 

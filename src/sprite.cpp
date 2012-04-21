@@ -146,7 +146,8 @@ sprite::render()
                   1.0f, 1.0f, 1.0f, 1.0f,
                   flip_x, flip_y);
 
-    renderBox();
+    if ( g->drawBoxes() )
+        renderBox();
 }
 
 void
@@ -287,7 +288,6 @@ sprite::attemptMoveStep(int *x, int *y, int bits)
             return attemptMoveStep(x, y, 0);
         }
     }
-
     return ret;
 }
 
