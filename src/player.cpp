@@ -102,11 +102,11 @@ player::moveLeftRight()
         return 0;
 
     int gx = 0, gy = 0;
-    if ( g->in->keys['a'] || g->in->keys['A'] )
+    if ( g->in->keys['a'] || g->in->keys['A'] || g->in->keys[SDLK_LEFT] )
     {
         gx -= 1;
     }
-    if ( g->in->keys['d'] || g->in->keys['D'] )
+    if ( g->in->keys['d'] || g->in->keys['D'] || g->in->keys[SDLK_RIGHT] )
     {
         gx += 1;
     }

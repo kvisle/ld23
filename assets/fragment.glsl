@@ -1,4 +1,4 @@
-precision mediump float;
+//precision mediump float;
 varying vec2 vTextureCoord;
 varying vec4 vColor;
 uniform sampler2D mytex;
