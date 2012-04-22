@@ -56,6 +56,7 @@ game::game() : c(160, 144, 160, 144), gs(5)
     assets.push_back(new checkpoint(this, 116*8, 28*8, 0));
     assets.push_back(new checkpoint(this, 184*8, 31*8, 0));
     assets.push_back(new checkpoint(this, 168*8, 59*8, 0));
+    assets.push_back(new checkpoint(this, 90*8, 84*8, 0));
 
 
     assets.push_back(new player(this, 28*8, 30*8, 0));
