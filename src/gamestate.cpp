@@ -12,4 +12,5 @@ gamestate::gamestate(int lives)
     activecp = NULL;
     doublejump = 0;
     blackkey = 0;
+    bosshp = 5;
 }

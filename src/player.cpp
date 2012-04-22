@@ -27,6 +27,8 @@ player::player(game *g, int x, int y, int z)
     damagewait = 0;
     knockback = 0;
     doublejumped = 0;
+
+    g->c.snapAt(x+8, y);
 }
 
 player::~player()

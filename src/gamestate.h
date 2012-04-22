@@ -16,6 +16,7 @@ class gamestate {
         checkpoint *activecp;
         int doublejump;
         int blackkey;
+        int bosshp;
 };
 
 #endif /* __GAMESTATE_H__ */

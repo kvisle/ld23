@@ -6,7 +6,8 @@ ld23_SOURCES = game.cpp resource.cpp shader.cpp tilemap.cpp input.cpp \
                camera.cpp \
                osd.cpp overlay.cpp player.cpp gamestate.cpp item.cpp key.cpp \
                door.cpp blob.cpp minidragon.cpp flame.cpp checkpoint.cpp \
-               background.cpp doublejump.cpp blackkey.cpp
+               background.cpp doublejump.cpp blackkey.cpp bosscontrol.cpp \
+               bosscreature.cpp
 
 ld23_LDADD = -L../lib/lib_json -ljsoncpp \
                 -L../lib/stb_image -lstbimage

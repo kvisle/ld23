@@ -1,0 +1,50 @@
+{
+  "qw" : 16,
+  "qh" : 8,
+  "box" : [
+    { "x": 6, "y": 5, "w": 4, "h": 3, "bits": 65536 },
+    { "x": 2, "y": 4, "w": 12, "h": 4, "bits": 65536 },
+    { "x": 2, "y": 3, "w": 12, "h": 5, "bits": 65536 }
+  ],
+  "frames" : [
+    { "x": 0.125, "y": 0.40625, "w": 0.0625, "h": 0.03125, "box": [ 0 ] },
+    { "x": 0.125, "y": 0.4375, "w": 0.0625, "h": 0.03125, "box": [ 1 ] },
+    { "x": 0.125, "y": 0.46875, "w": 0.0625, "h": 0.03125, "box": [ 2 ] },
+    { "x": 0.125, "y": 0.5, "w": 0.0625, "h": 0.03125 },
+    { "x": 0.125, "y": 0.53125, "w": 0.0625, "h": 0.03125 }
+  ],
+  "animations" : [
+    {
+      "id" : 0, // ANIMATION_HIDDEN
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 4 ]
+    },
+    {
+      "id" : 1, // ANIMATION_SPAWNING
+      "loop" : 0,
+      "next" : 2,
+      "interval" : 10,
+      "frames" : [ 0, 1 ]
+    },
+    {
+      "id" : 2, // ANIMATION_SPAWNED
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 2 ]
+    },
+    {
+      "id" : 3, // ANIMATION_FLAT
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 3 ]
+    },
+    {
+      "id" : 4,
+      "loop" : 0,
+      "next" : 0,
+      "interval" : 10,
+      "frames" : [ 1, 0 ]
+    }
+  ]
+}

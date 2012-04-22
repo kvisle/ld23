@@ -32,6 +32,7 @@
 #include "background.h"
 #include "doublejump.h"
 #include "blackkey.h"
+#include "bosscontrol.h"
 
 game::game() : c(160, 144, 160, 144), gs(5)
 {
@@ -58,12 +59,13 @@ game::game() : c(160, 144, 160, 144), gs(5)
 
 
     assets.push_back(new player(this, 28*8, 30*8, 0));
+//    assets.push_back(new player(this, 89*8, 84*8, 0));
 
     assets.push_back(new doublejump(this, 194*8, 86*8, 0));
     assets.push_back(new key(this, 129*8, 32*8, 0));
-    assets.push_back(new key(this, 142*8, 50*8, 0));
+    assets.push_back(new key(this, 153*8, 50*8, 0));
     assets.push_back(new key(this, 82*8, 68*8, 0));
-    assets.push_back(new blackkey(this, 102*8, 50*8, 0));
+    assets.push_back(new blackkey(this, 113*8, 50*8, 0));
 
     assets.push_back(new door(this, 156*8, 30*8, 0, 0));
     assets.push_back(new door(this, 182*8, 66*8, 0, 0));
@@ -76,6 +78,10 @@ game::game() : c(160, 144, 160, 144), gs(5)
     assets.push_back(new blob(this, 125*8, 32*8, 0));
     assets.push_back(new blob(this, 136*8, 32*8, 0));
     assets.push_back(new minidragon(this, 153*8, 31*8, 0));
+    assets.push_back(new minidragon(this, 104*8, 49*8, 0));
+    assets.push_back(new minidragon(this, 142*8, 49*8, 0));
+    assets.push_back(new minidragon(this, 86*8, 67*8, 0));
+    assets.push_back(new bosscontrol(this));
 
 
 

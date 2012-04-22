@@ -28,5 +28,7 @@ flame::start(int x, int y, int z, int flip)
 void
 flame::stop()
 {
+    if ( animation == 3 )
+        return;
     setAnimation(2);
 }
