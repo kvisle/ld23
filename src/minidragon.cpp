@@ -48,6 +48,7 @@ minidragon::update()
             fire = 0;
             walking = 1;
             untilfire = 40 + (rand()%40);
+            setAnimation(0);
         }
         return;
     }
