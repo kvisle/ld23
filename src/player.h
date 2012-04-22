@@ -20,6 +20,8 @@ class player : public sprite {
         virtual void damage(drawable *d);
         virtual void kill();
 
+        void respawn();
+
     private:
         int walking;
         int falling;

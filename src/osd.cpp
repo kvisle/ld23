@@ -37,7 +37,7 @@ osd::render()
 
     if ( !g->gs.playeralive )
     {
-        g->f->drawString("\\0f380fff\\you are dead", 33, 33, NULL);
-        g->f->drawString("\\9bbc0fff\\you are dead", 32, 32, NULL);
+        g->f->drawString("\\0f380fff\\ you are dead\n\npress space to\n\n   respawn", 25, 33, NULL);
+        g->f->drawString("\\9bbc0fff\\ you are dead\n\npress space to\n\n   respawn", 24, 32, NULL);
     }
 }

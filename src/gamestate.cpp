@@ -1,3 +1,4 @@
+#include <cstdio>
 #include "gamestate.h"
 
 gamestate::gamestate(int lives)
@@ -8,4 +9,5 @@ gamestate::gamestate(int lives)
     gotGun = 0;
     ammo = 0;
     hp = 5;
+    activecp = NULL;
 }

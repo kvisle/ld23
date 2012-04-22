@@ -1,6 +1,8 @@
 #ifndef __GAMESTATE_H__
 #define __GAMESTATE_H__
 
+class checkpoint;
+
 class gamestate {
     public:
         gamestate(int lives);
@@ -11,6 +13,7 @@ class gamestate {
         int keys;
         int gotGun;
         int ammo;
+        checkpoint *activecp;
 };
 
 #endif /* __GAMESTATE_H__ */

@@ -5,7 +5,7 @@
 #include "input.h"
 #include "sound.h"
 #include "bits.h"
-
+#include "checkpoint.h"
 #define ANIMATION_IDLE 0
 #define ANIMATION_WALK 1
 #define ANIMATION_FALL 2
@@ -173,7 +173,8 @@ player::input(union ninput in)
     switch(in.type)
     {
     case NINPUT_KEYDOWN:
-        if ( in.key.sym == ' ' ) { jump_start = 1; }
+        if ( dead && in.key.sym == ' ' ) { respawn(); }
+        else if ( in.key.sym == ' ' ) { jump_start = 1; }
         break;
     case NINPUT_KEYUP:
         break;
@@ -186,6 +187,17 @@ player::kill()
     dead = 1;
     g->gs.playeralive = 0;
     puts("I died.");
+}
+
+void
+player::respawn()
+{
+    dead = 0;
+    g->gs.playeralive = 1;
+    x = g->gs.activecp->x;
+    y = g->gs.activecp->y;
+    g->gs.hp = 5;
+    g->c.snapAt(x+8, y);
 }
 
 void

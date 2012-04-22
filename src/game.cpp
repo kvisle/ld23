@@ -28,6 +28,7 @@
 #include "blob.h"
 #include "minidragon.h"
 #include "flame.h"
+#include "checkpoint.h"
 
 game::game() : c(160, 144, 160, 144), gs(5)
 {
@@ -43,7 +44,17 @@ game::game() : c(160, 144, 160, 144), gs(5)
     o = new osd(this);
 
     assets.push_back(new tilemap(this, "tilemap.png", "gfx.png", "gfxts1.json"));
+
+// Checkpoints: 31x30, 116x28, 184x31, 168x59
+
+    assets.push_back(new checkpoint(this, 31*8, 30*8, 0));
+    assets.push_back(new checkpoint(this, 116*8, 28*8, 0));
+    assets.push_back(new checkpoint(this, 184*8, 31*8, 0));
+    assets.push_back(new checkpoint(this, 168*8, 59*8, 0));
+
+
     assets.push_back(new player(this, 28*8, 30*8, 0));
+
     assets.push_back(new key(this, 32*8, 30*8, 0));
     assets.push_back(new key(this, 142*8, 50*8, 0));
     assets.push_back(new key(this, 82*8, 68*8, 0));
