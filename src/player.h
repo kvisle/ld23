@@ -17,7 +17,7 @@ class player : public sprite {
         virtual void pickUp(drawable *d);
         virtual void unLock(drawable *d);
 
-        virtual void damage();
+        virtual void damage(drawable *d);
         virtual void kill();
 
     private:
@@ -27,12 +27,19 @@ class player : public sprite {
         int jumping;
         int jump_progress;
         int dead;
+        int knockback;
+        int damagewait;
 
         int moveGravity();
         int moveLeftRight();
         int moveJump();
 
+        int knockMove();
+        void knockbackInit();
+        int knockdir;
+
         sound *jumpsound;
+        sound *hurtsound;
 };
 
 #endif /* __PLAYER_H__ */

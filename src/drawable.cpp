@@ -66,6 +66,18 @@ drawable::unLock(drawable *d)
 
 }
 
+void
+drawable::damage(drawable *d)
+{
+
+}
+
+void
+drawable::kill()
+{
+
+}
+
 int
 drawable::identify()
 {
@@ -77,4 +89,10 @@ drawable::remove()
 {
     puts("remove()");
     removeme = 1;
+}
+
+int
+drawable::inFrame()
+{
+    return 1;
 }

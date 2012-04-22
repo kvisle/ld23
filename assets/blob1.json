@@ -1,0 +1,39 @@
+{
+  "qw" : 8,
+  "qh" : 8,
+  "box" : [
+    { "x": 0, "y": 4, "w": 8, "h": 4, "bits": 4 },
+    { "x": 1, "y": 3, "w": 6, "h": 2, "bits": 65536 }
+  ],
+  "frames" : [
+    { "x": 0.000, "y": 0.3125, "w": 0.03125, "h": 0.03125, "box": [ 0,1 ] },
+    { "x": 0.03125, "y": 0.3125, "w": 0.03125, "h": 0.03125, "box": [ 0,1 ] },
+    { "x": 0.0625, "y": 0.3125, "w": 0.03125, "h": 0.03125 }
+  ],
+  "animations" : [
+    {
+      "id" : 0, // ANIMATION_IDLE
+      "loop" : 1,
+      "interval" : 50,
+      "frames" : [ 0, 0, 1 ]
+    },
+    {
+      "id" : 1, // ANIMATION_JUMP
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 1 ]
+    },
+    {
+      "id" : 2, // ANIMATION_JUMPSOON
+      "loop" : 1,
+      "interval" : 5,
+      "frames" : [ 0, 1 ]
+    },
+    {
+      "id" : 3, // ANIMATION_FLAT
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 2 ]
+    }
+  ]
+}

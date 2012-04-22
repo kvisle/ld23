@@ -16,12 +16,15 @@ player::player(game *g, int x, int y, int z)
     loadJson(std::string("player.json"));
     g->in->subscribe(this);
     jumpsound = g->rm->getSound("jump.wav");
+    hurtsound = g->rm->getSound("hurt.wav");
 
     walking = 0;
     falling = 0;
     jumping = 0;
     jump_progress = 0;
     dead = 0;
+    damagewait = 0;
+    knockback = 0;
 }
 
 player::~player()
@@ -34,6 +37,12 @@ player::update()
 {
     if ( dead )
         return;
+
+    if ( damagewait > 0 )
+        damagewait--;
+
+    if ( knockback )
+        knockback = knockMove();
 
     falling = moveGravity();
     walking = moveLeftRight();
@@ -49,6 +58,25 @@ player::update()
 }
 
 int
+player::knockMove()
+{
+    if ( knockback == 0 || knockback > 10 )
+        return 0;
+
+    int gx = ( knockdir ) ? 1 : -1;
+    int gy = -1;
+
+    int ret = !attemptMove(&gx, &gy, 0);
+
+    knockback++;
+
+    if ( ret == 0 )
+        knockback = 0;
+
+    return knockback;
+}
+
+int
 player::moveGravity()
 {
     if ( jumping )
@@ -61,6 +89,9 @@ player::moveGravity()
 int
 player::moveLeftRight()
 {
+    if ( knockback )
+        return 0;
+
     int gx = 0, gy = 0;
     if ( g->in->keys['a'] || g->in->keys['A'] )
     {
@@ -87,6 +118,9 @@ player::moveLeftRight()
 int
 player::moveJump()
 {
+    if ( knockback )
+        return 0;
+
     if ( falling )
         return 0;
 
@@ -119,9 +153,17 @@ player::moveJump()
 }
 
 void
+player::knockbackInit()
+{
+    jumping = 0;
+    knockback = 1;
+    knockdir = flip_x;
+}
+
+void
 player::render()
 {
-    if ( !dead )
+    if ( !dead && damagewait / 4 % 2 == 0 )
         sprite::render();
 }
 
@@ -147,9 +189,18 @@ player::kill()
 }
 
 void
-player::damage()
+player::damage(drawable *d)
 {
+    if ( damagewait )
+        return;
+
+    if ( --g->gs.hp == 0 )
+        return kill();
+
+    knockbackInit();
+    damagewait = 64;
     puts("I'm damaged.");
+    hurtsound->play();
 }
 
 void

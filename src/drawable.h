@@ -19,7 +19,11 @@ class drawable {
         virtual void input(union ninput in);
         virtual void pickUp(drawable *d);
         virtual void unLock(drawable *d);
+        virtual void damage(drawable *d);
+        virtual void kill();
+
         virtual int identify();
+        virtual int inFrame();
 
         game *g;
         int x, y, z;

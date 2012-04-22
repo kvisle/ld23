@@ -33,7 +33,7 @@ sprite::sprite(game *g, int x, int y, int z, std::string tex, Json::Value json)
 }
 
 void
-sprite::damage()
+sprite::damage(drawable *d)
 {
     puts("Unimplemented damage function.");
 }
@@ -345,11 +345,26 @@ sprite::collidesWith(float x, float y, float w, float h, drawable *other, int bi
         if ( bits & BIT_UNLOCKS && myb.bits & BIT_UNLOCKABLE )
             other->unLock(this);
 
+        if ( bits & BIT_DAMAGEABLE && myb.bits & BIT_DAMAGE )
+            other->damage(this);
+
+        if ( bits & BIT_DAMAGE && myb.bits & BIT_DAMAGEABLE )
+            damage(other);
+
         ret |= myb.bits;
     }
-
-    (void)other;
 
     return ret;
 }
 
+int
+sprite::inFrame()
+{
+    if ( x+qw > g->c.x && 
+         x < g->c.x + g->c.w &&
+         y+qh > g->c.y &&
+         y < g->c.y + g->c.h )
+            return 1;
+
+    return 0;
+}

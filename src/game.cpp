@@ -25,6 +25,7 @@
 #include "player.h"
 #include "key.h"
 #include "door.h"
+#include "blob.h"
 
 game::game() : c(160, 144, 160, 144), gs(5)
 {
@@ -47,6 +48,11 @@ game::game() : c(160, 144, 160, 144), gs(5)
     assets.push_back(new door(this, 156*8, 30*8, 0));
     assets.push_back(new door(this, 182*8, 66*8, 0));
     assets.push_back(new door(this, 176*8, 84*8, 0));
+    assets.push_back(new blob(this, 52*8, 31*8, 0));
+    assets.push_back(new blob(this, 67*8, 28*8, 0));
+    assets.push_back(new blob(this, 75*8, 30*8, 0));
+    assets.push_back(new blob(this, 125*8, 32*8, 0));
+    assets.push_back(new blob(this, 136*8, 32*8, 0));
 
 
     std::cout << "Made game" << std::endl;
@@ -101,7 +107,9 @@ game::update()
             i--;
             continue;
         }
-        assets[i]->update();
+
+        if ( assets[i]->inFrame() )
+            assets[i]->update();
     }
 
 
@@ -126,8 +134,8 @@ game::collides(float x, float y, float w, float h, sprite * me, int bits)
     if ( ret & BIT_KILL && bits & BIT_KILLABLE )
         me->kill();
 
-    if ( ret & BIT_DAMAGE && bits & BIT_KILLABLE )
-        me->damage();
+//    if ( ret & BIT_DAMAGE && bits & BIT_KILLABLE )
+//        me->damage();
 
     return ret;
 }
