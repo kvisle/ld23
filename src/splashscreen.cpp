@@ -24,7 +24,7 @@ splash::render()
         g->f->drawString("\\9bbc0fff\\press enter to\n\n start the game", 16, 72, NULL);
     }
 
-    g->f->drawString("\\9bbc0fff\\ ludum dare # 23\n   april 2012\ntrygve vea/kvisle", 8, 112, NULL);
+    g->f->drawString("\\9bbc0fff\\ ludum dare # 23\n   april 2012\ntwitter.com/kvisle", 8, 112, NULL);
 }
 
 void
