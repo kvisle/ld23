@@ -17,6 +17,7 @@ player::player(game *g, int x, int y, int z)
     g->in->subscribe(this);
     jumpsound = g->rm->getSound("jump.wav");
     hurtsound = g->rm->getSound("hurt.wav");
+    respawnsound = g->rm->getSound("respawn.wav");
 
     walking = 0;
     falling = 0;
@@ -198,6 +199,7 @@ player::respawn()
     y = g->gs.activecp->y;
     g->gs.hp = 5;
     g->c.snapAt(x+8, y);
+    respawnsound->play();
 }
 
 void

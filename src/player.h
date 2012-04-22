@@ -42,6 +42,7 @@ class player : public sprite {
 
         sound *jumpsound;
         sound *hurtsound;
+        sound *respawnsound;
 };
 
 #endif /* __PLAYER_H__ */

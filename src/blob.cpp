@@ -12,7 +12,7 @@ blob::blob(game *g, int x, int y, int z)
     setAnimation(0);
 
     isdead = 0;
-    sincejump = rand() % 80;
+    sincejump = rand() % 40;
     jumping = 0;
     jump_start = 0;
     jump_dir = 0;

@@ -29,6 +29,7 @@
 #include "minidragon.h"
 #include "flame.h"
 #include "checkpoint.h"
+#include "background.h"
 
 game::game() : c(160, 144, 160, 144), gs(5)
 {
@@ -43,6 +44,7 @@ game::game() : c(160, 144, 160, 144), gs(5)
     ov = new overlay(this);
     o = new osd(this);
 
+    assets.push_back(new background(this, 0, 0, 0));
     assets.push_back(new tilemap(this, "tilemap.png", "gfx.png", "gfxts1.json"));
 
 // Checkpoints: 31x30, 116x28, 184x31, 168x59
@@ -55,7 +57,7 @@ game::game() : c(160, 144, 160, 144), gs(5)
 
     assets.push_back(new player(this, 28*8, 30*8, 0));
 
-    assets.push_back(new key(this, 32*8, 30*8, 0));
+    assets.push_back(new key(this, 129*8, 32*8, 0));
     assets.push_back(new key(this, 142*8, 50*8, 0));
     assets.push_back(new key(this, 82*8, 68*8, 0));
     assets.push_back(new door(this, 156*8, 30*8, 0));
