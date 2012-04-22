@@ -3,21 +3,31 @@
 #include "resourcemanager.h"
 #include "sound.h"
 
-door::door(game *g, int x, int y, int z)
+door::door(game *g, int x, int y, int z, int anim)
     : sprite(g, x, y, z, "gfx.png")
 {
     loadJson(std::string("door.json"));
-    setAnimation(0);
+    setAnimation(anim);
     opensound = g->rm->getSound("opendoor.wav");
 }
 
 void
 door::unLock(drawable *d)
 {
-    if ( animation != 0 )
+    if ( animation != 0 && animation != 3 )
         return;
 
-    setAnimation(1);
-    opensound->play();
+    if ( animation == 0 && g->gs.keys )
+    {
+        setAnimation(1);
+        opensound->play();
+        g->gs.keys--;
+    }
+
+    if ( animation == 3 && g->gs.blackkey )
+    {
+        setAnimation(1);
+        opensound->play();
+    }
 }
 

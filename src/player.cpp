@@ -137,7 +137,7 @@ player::moveJump()
 //    puts("You're pressing space");
 
 
-    if ( jump_start && !doublejumped )
+    if ( jump_start && ( ( !falling && !jumping ) || ( !doublejumped && g->gs.doublejump ) ) )
     {
         if ( jumping || falling )
         {
@@ -255,6 +255,9 @@ player::pickUp(drawable *d)
     case 2:
         puts("Got gun");
         break;
+    case 3:
+        g->gs.blackkey = 1;
+        break;
     }
     d->remove();
 }
@@ -262,9 +265,5 @@ player::pickUp(drawable *d)
 void
 player::unLock(drawable *d)
 {
-    if ( g->gs.keys == 0 )
-        return;
-
     d->unLock(this);
-    g->gs.keys--;
 }

@@ -33,7 +33,13 @@ osd::render()
                        64, 0, 8, 8,
                        0.03125, 0.1875, 0.03125, 0.0315);
     }
-    
+    if ( g->gs.blackkey )
+    {
+        g->r->addQuad(tex->getTexture(), NULL,
+                       80, 0, 8, 8,
+                       0.125, 0.1875, 0.03125, 0.0315);
+    }
+
 
     sprintf(number, "\\9bbc0fff\\%02d", g->gs.keys);
     g->f->drawString(number, 8, 0, NULL);

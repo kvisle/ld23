@@ -7,7 +7,7 @@ class sound;
 
 class door : public sprite {
     public:
-        door(game *g, int x, int y, int z);
+        door(game *g, int x, int y, int z, int anim);
 
         virtual void unLock(drawable *d);
         sound *opensound;
