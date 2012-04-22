@@ -14,6 +14,7 @@ class gamestate {
         int gotGun;
         int ammo;
         checkpoint *activecp;
+        int doublejump;
 };
 
 #endif /* __GAMESTATE_H__ */

@@ -27,6 +27,13 @@ osd::render()
                    32, 0, 8, 8,
                    0.09375, 0.1875, 0.03125, 0.0315);
 
+    if ( g->gs.doublejump )
+    {
+        g->r->addQuad(tex->getTexture(), NULL,
+                       64, 0, 8, 8,
+                       0.03125, 0.1875, 0.03125, 0.0315);
+    }
+    
 
     sprintf(number, "\\9bbc0fff\\%02d", g->gs.keys);
     g->f->drawString(number, 8, 0, NULL);

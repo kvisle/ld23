@@ -10,4 +10,5 @@ gamestate::gamestate(int lives)
     ammo = 0;
     hp = 5;
     activecp = NULL;
+    doublejump = 1;
 }

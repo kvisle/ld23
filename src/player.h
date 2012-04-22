@@ -31,6 +31,7 @@ class player : public sprite {
         int dead;
         int knockback;
         int damagewait;
+        int doublejumped;
 
         int moveGravity();
         int moveLeftRight();

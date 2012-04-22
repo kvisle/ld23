@@ -26,6 +26,7 @@ player::player(game *g, int x, int y, int z)
     dead = 0;
     damagewait = 0;
     knockback = 0;
+    doublejumped = 0;
 }
 
 player::~player()
@@ -84,7 +85,12 @@ player::moveGravity()
         return 0;
 
     int gy = 3, gx = 0;
-    return !attemptMove(&gx, &gy, 0);
+    int ret = !attemptMove(&gx, &gy, 0);
+
+    if ( !ret )
+        doublejumped = 0;
+
+    return ret;
 }
 
 int
@@ -122,14 +128,23 @@ player::moveJump()
     if ( knockback )
         return 0;
 
-    if ( falling )
-        return 0;
+//    if ( falling )
+//        return 0;
 
     if ( !g->in->keys[' '] )
         return 0;
 
-    if ( !jumping && jump_start )
+//    puts("You're pressing space");
+
+
+    if ( jump_start && !doublejumped )
     {
+        if ( jumping || falling )
+        {
+            doublejumped++;
+            falling = 0;
+        }
+
         jump_progress = 0;
         jump_start = 0;
         jumpsound->play();
@@ -140,6 +155,10 @@ player::moveJump()
         return 0;
     }
 
+    if ( falling )
+        return 0;
+
+
     int gx = 0;
     int gy = -2;
 
@@ -148,7 +167,7 @@ player::moveJump()
     int ret = !attemptMove(&gx, &gy, 0);
 
     if ( ret == 0 )
-        jump_progress = 21;
+        jump_progress = 26;
 
     return ret;
 }
@@ -175,7 +194,10 @@ player::input(union ninput in)
     {
     case NINPUT_KEYDOWN:
         if ( dead && in.key.sym == ' ' ) { respawn(); }
-        else if ( in.key.sym == ' ' ) { jump_start = 1; }
+        else if ( in.key.sym == ' ' )
+        {
+            jump_start = 1;
+        }
         break;
     case NINPUT_KEYUP:
         break;
@@ -228,7 +250,7 @@ player::pickUp(drawable *d)
         g->gs.keys++;
         break;
     case 1:
-        puts("Got jetpack");
+        g->gs.doublejump = 1;
         break;
     case 2:
         puts("Got gun");

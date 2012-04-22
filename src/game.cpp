@@ -30,6 +30,7 @@
 #include "flame.h"
 #include "checkpoint.h"
 #include "background.h"
+#include "doublejump.h"
 
 game::game() : c(160, 144, 160, 144), gs(5)
 {
@@ -57,6 +58,7 @@ game::game() : c(160, 144, 160, 144), gs(5)
 
     assets.push_back(new player(this, 28*8, 30*8, 0));
 
+    assets.push_back(new doublejump(this, 194*8, 86*8, 0));
     assets.push_back(new key(this, 129*8, 32*8, 0));
     assets.push_back(new key(this, 142*8, 50*8, 0));
     assets.push_back(new key(this, 82*8, 68*8, 0));
