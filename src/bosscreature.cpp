@@ -11,7 +11,7 @@ bosscreature::bosscreature(game *g, int x, int y, int z)
     setAnimation(0);
     sincespawn = 0;
 
-    hitsound = g->rm->getSound("hitsound.wav");
+    hitsound = g->rm->getSound("bosshit.wav");
 }
 
 void
