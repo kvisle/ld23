@@ -5,7 +5,7 @@ ld23_SOURCES = game.cpp resource.cpp shader.cpp tilemap.cpp input.cpp \
                resourcemanager.cpp tile.cpp tileset.cpp font.cpp sprite.cpp \
                camera.cpp \
                osd.cpp overlay.cpp player.cpp gamestate.cpp item.cpp key.cpp \
-               door.cpp blob.cpp
+               door.cpp blob.cpp minidragon.cpp flame.cpp
 
 ld23_LDADD = -L../lib/lib_json -ljsoncpp \
                 -L../lib/stb_image -lstbimage

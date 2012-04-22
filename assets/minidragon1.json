@@ -1,0 +1,40 @@
+{
+  "qw" : 16,
+  "qh" : 16,
+  "box" : [
+    { "x": 0, "y": 8, "w": 16, "h": 8, "bits": 4 },
+    { "x": 2, "y": 3, "w": 15, "h": 5, "bits": 65536 }
+  ],
+  "frames" : [
+    { "x": 0.000, "y": 0.34375, "w": 0.0625, "h": 0.0625, "box": [ 0,1 ] },
+    { "x": 0.0625, "y": 0.34375, "w": 0.0625, "h": 0.0625, "box": [ 0,1 ] },
+    { "x": 0.125, "y": 0.34375, "w": 0.0625, "h": 0.0625, "box": [ 0,1 ] },
+    { "x": 0.1875, "y": 0.34375, "w": 0.0625, "h": 0.0625 }
+  ],
+  "animations" : [
+    {
+      "id" : 0, // ANIMATION_WALK
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 0, 1 ]
+    },
+    {
+      "id" : 1, // ANIMATION_FIRESOON
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 0 ]
+    },
+    {
+      "id" : 2, // ANIMATION_FIRE
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 2 ]
+    },
+    {
+      "id" : 3, // ANIMATION_FLAT
+      "loop" : 1,
+      "interval" : 10,
+      "frames" : [ 3 ]
+    }
+  ]
+}
