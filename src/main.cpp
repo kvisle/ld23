@@ -54,6 +54,10 @@ int main(int argc, char *argv[])
                 if ( e.key.keysym.sym == 'r' ) {
                     g.setReload(true);
                 }
+                if ( e.key.keysym.sym == SDLK_RETURN && g.gs.state == 0 )
+                {
+                    g.gs.state = 1;
+                }
                 break;
             case SDL_KEYUP:
                 in.type = NINPUT_KEYUP;

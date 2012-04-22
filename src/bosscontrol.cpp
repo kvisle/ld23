@@ -39,7 +39,7 @@ bosscontrol::update()
 {
     state++;
 
-    if ( g->gs.bosshp ) {
+    if ( g->gs.bosshp > 0 ) {
         if ( state % 300 == 0 ) {
             flame1->start(81*8, 116*8, 0, 1);
             flame3->stop();
@@ -53,10 +53,16 @@ bosscontrol::update()
             flame2->stop();
         }
     }
-    else {
+    else if ( g->gs.bosshp == 0 ) {
         flame1->stop();
         flame2->stop();
         flame3->stop();
+        g->gs.bosshp--;
+    }
+    else {
+        g->gs.bosshp--;
+        if ( g->gs.bosshp == -60 )
+            g->gs.state = 2;
     }
 
     bc->update();

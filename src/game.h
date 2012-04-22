@@ -15,6 +15,9 @@ class input;
 class osd;
 class audio;
 class overlay;
+class splash;
+class win;
+
 
 class game {
     public:
@@ -38,6 +41,8 @@ class game {
         font *f;
         overlay *ov;
         gamestate gs;
+        splash * spl;
+        win * w;
 
         int reload;
 

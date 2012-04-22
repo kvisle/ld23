@@ -17,6 +17,7 @@ class gamestate {
         int doublejump;
         int blackkey;
         int bosshp;
+        int state;
 };
 
 #endif /* __GAMESTATE_H__ */

@@ -33,6 +33,8 @@
 #include "doublejump.h"
 #include "blackkey.h"
 #include "bosscontrol.h"
+#include "splashscreen.h"
+#include "winscreen.h"
 
 game::game() : c(160, 144, 160, 144), gs(5)
 {
@@ -46,6 +48,8 @@ game::game() : c(160, 144, 160, 144), gs(5)
     f = new font(rm->getImage("charmap2.png"), this, 8, 8);
     ov = new overlay(this);
     o = new osd(this);
+    spl = new splash(this);
+    w = new win(this);
 
     assets.push_back(new background(this, 0, 0, 0));
     assets.push_back(new tilemap(this, "tilemap.png", "gfx.png", "gfxts1.json"));
@@ -85,6 +89,7 @@ game::game() : c(160, 144, 160, 144), gs(5)
     assets.push_back(new bosscontrol(this));
 
 
+    SDL_WM_SetCaption("Tiny Quest (LD#23, Compo version)", NULL);
 
     std::cout << "Made game" << std::endl;
 }
@@ -104,11 +109,23 @@ game::render()
 {
     r->clear();
 
-    for (uint32_t i=0; i < assets.size(); i++)
+    switch(gs.state)
     {
-        assets[i]->render();
+    case 0:
+        spl->render();
+        break;
+    case 1:
+        for (uint32_t i=0; i < assets.size(); i++)
+        {
+            assets[i]->render();
+        }
+        o->render();
+        break;
+    case 2:
+        w->render();
+        break;
     }
-    o->render();
+
     ov->render();
     r->swap();
 }
@@ -119,32 +136,35 @@ game::update()
     updateno++;
 
 #ifdef TARGET_SDL
-    if ( updateno % 60 == 0 )
+/*    if ( updateno % 60 == 0 )
     {
         char caption[128];
         sprintf(caption, "Assets: %lu", assets.size());
         SDL_WM_SetCaption(caption, NULL);
-    }
+    }*/
 #endif
 
-//    std::vector<drawable*>::iterator it;
-
-//    for (it = assets.begin() ; it != assets.end(); it++)
-    for (uint32_t i=0; i < assets.size(); i++)
-    {
-        if ( assets[i]->removeme )
+    switch(gs.state) {
+    case 0:
+        spl->update();
+        break;
+    case 1:
+        for (uint32_t i=0; i < assets.size(); i++)
         {
-            assets.erase(assets.begin() + i);
-            i--;
-            continue;
+            if ( assets[i]->removeme )
+            {
+                assets.erase(assets.begin() + i);
+                i--;
+                continue;
+            }
+            if ( assets[i]->inFrame() )
+                assets[i]->update();
         }
-
-        if ( assets[i]->inFrame() )
-            assets[i]->update();
-    }
-
-
-    this->setReload(0);
+        this->setReload(0);
+        break;
+    case 2:
+        break;
+    }    
 
     return 0;
 }

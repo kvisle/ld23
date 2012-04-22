@@ -3,6 +3,7 @@
 
 gamestate::gamestate(int lives)
 {
+    state = 0;
     playeralive = 1;
     playerlives = lives;
     keys = 0;
