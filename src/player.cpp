@@ -6,6 +6,7 @@
 #include "sound.h"
 #include "bits.h"
 #include "checkpoint.h"
+#include "font.h"
 #define ANIMATION_IDLE 0
 #define ANIMATION_WALK 1
 #define ANIMATION_FALL 2
@@ -187,6 +188,11 @@ player::render()
 {
     if ( !dead && damagewait / 4 % 2 == 0 )
         sprite::render();
+
+    if ( g->gs.doublejump )
+    {
+        g->f->drawString("\\9bbc0fff\\  you got\ndouble jump.\n\njump while\njumping to\njump higher", 184*8, 77*8, &(g->c));
+    }
 }
 
 void
