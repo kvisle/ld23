@@ -1,0 +1,27 @@
+This is my entry for Ludum Dare#23
+
+How to build:
+
+ # ./autogen.sh
+ # ./configure
+ # make
+
+How to run after build:
+
+ # ./ld23
+
+This game uses a bunch of libraries;
+
+ * libglew
+ * openal
+ * opengl
+ * sdl
+
+
+How to play:
+
+ * Use a/d or arrow keys to move left/right
+ * Use space to jump
+ * Use space again to doublejump, if you have found the necessary artifact.
+
+

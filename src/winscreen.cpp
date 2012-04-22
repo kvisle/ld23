@@ -13,7 +13,7 @@ win::win(game *g)
 void
 win::render()
 {
-    g->f->drawString("\\9bbc0fff\\congratulations\n\nyou have completed\ntiny quest.a entry\nfor ludum dare #23\n\nthis game was made\nin 48 hours.\n\n  thank you for\n playing my game.\n\n\ntwitter.com/kvisle", 8, 8, NULL);
+    g->f->drawString("\\9bbc0fff\\congratulations\n\nyou have completed\ntiny quest.\nan entry for\nludum dare #23\n\nthis game was made\nin 48 hours.\n\n  thank you for\n playing my game.\n\n\ntwitter.com/kvisle", 8, 8, NULL);
 }
 
 void
